@@ -614,6 +614,7 @@
   function submit(timedOut = false) {
     if (state.phase !== "guess") return;
     clearTimeout(fortyTimer);
+    if (state.guess === -40) earn("minus-forty"); // locking in at −40 counts, not just resting there
     stopCountdown();
     const errG = Math.abs(state.guess - actualRounded());
     const errC = guessUnit() === "F" ? (errG * 5) / 9 : errG;
@@ -621,7 +622,8 @@
     state.score += pts;
     state.history.push({ prompt: state.prompt, errC, errG, pts });
     state.phase = "reveal";
-    if (rules.failBeyondC != null && errC > rules.failBeyondC) state.failed = { round: state.round, offG: errG, timedOut };
+    // Permadeath: a big miss or running out of time ends the game
+    if (rules.failBeyondC != null && (timedOut || errC > rules.failBeyondC)) state.failed = { round: state.round, offG: errG, timedOut };
 
     placeArrows();
     thermo.classList.add("is-revealed");
