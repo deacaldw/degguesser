@@ -114,6 +114,8 @@
     /* the setup screen starts at the top */
     /* no top bar here, so keep the title clear of the status bar / notch area */
     [data-screen="screen-start"] .stage { justify-content: flex-start; padding-top: max(48px, calc(env(safe-area-inset-top) + 28px)); }
+    /* until game.js shows the first screen, the bars stay hidden (no empty button flashing in) */
+    body:not([data-screen]) :is(.titlebar, .bottombar) { visibility: hidden; }
     [data-screen="screen-start"] .titlebar { display: none; }
     .sentinel { height: 1px; margin-top: -1px; }
 
