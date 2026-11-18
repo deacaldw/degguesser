@@ -18,9 +18,9 @@ fi
 
 rm -rf public
 mkdir public
-for f in * .[!.]*; do
+for f in *; do  # dotfiles (.git, .gitignore, .gitattributes...) are never copied
   case "$f" in
-    public|build.sh|README.md|LICENSE|.git|.gitignore|.gitmodules|.claude|'.[!.]*') ;;
+    public|build.sh|README.md|LICENSE) ;;
     *) cp -R "$f" public/ ;;
   esac
 done
