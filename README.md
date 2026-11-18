@@ -2,7 +2,7 @@
 
 DegGuesser is a game where you guess the temperature in the other unit. It shows you a temperature in °C, and you drag the thermometer to where you think it is in °F, or the other way around. A game has six rounds, and the closer you get, the more points you score.
 
-You can play it at [degguesser.deancaldwell.com](https://degguesser.deancaldwell.com).
+You can play it on the demo page at [degguesser.deancaldwell.com](https://degguesser.deancaldwell.com/).
 
 ## Modes
 
